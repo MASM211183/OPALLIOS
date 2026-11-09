@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Opallios S.A.S. - Bisutería artesanal personalizada en Bogotá. Aretes, collares, manillas, colgantes y más, hechos a mano con cariño e intención.">
+<meta name="theme-color" content="#0B0B0B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B0B0B'/%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='%23D4AF6A' stroke-width='2'/%3E%3Cpath d='M35 50 Q40 35 45 50' fill='none' stroke='%23D4AF6A' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Opallios S.A.S. - Accesorios artesanales personalizados</title>
+<style>
+:root{
+  --color-fondo:#0B0B0B;
+  --color-metal:#D4AF6A;
+  --color-opalo:#F5F1E8;
+  --texto-principal:#F5F1E8;
+  --texto-secundario:#d9d3c0;
+  --borde:#4a4438;
+  --sombra:0 0 30px rgba(212,175,106,0.10);
+  --max-ancho:1200px;
+  --radio:10px;
+  --transicion:0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--color-fondo);
+  color:var(--texto-principal);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.serif{font-family:'Cinzel',Georgia,serif;font-weight:600;letter-spacing:0.04em}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+img{max-width:100%;display:block}
+.section{padding:60px 20px;position:relative}
+.section-title{
+  text-align:center;
+  font-size:2rem;
+  color:var(--color-metal);
+  margin-bottom:16px;
+  position:relative;
+  display:inline-block;
+  left:50%;
+  transform:translateX(-50%);
+}
+.section-title::after{
+  content:'';
+  position:absolute;
+  left:50%;bottom:-10px;transform:translateX(-50%);
+  width:60px;height:2px;background:var(--color-metal);
+}
+.container{max-width:var(--max-ancho);margin:0 auto}
+.grid{display:grid;gap:24px}
+
+/* Header */
+.header{
+  position:fixed;top:0;left:0;right:0;
+  background:linear-gradient(180deg,rgba(11,11,11,0.92),rgba(11,11,11,0.6));
+  backdrop-filter:blur(10px);
+  z-index:1000;border-bottom:1px solid var(--borde);
+}
+.header .container{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.logo-link{display:flex;align-items:center;gap:12px}
+.logo-svg{width:44px;height:44px;display:block}
+.logo-text{font-family:'Cinzel',serif;color:var(--color-metal);font-size:1.35rem;letter-spacing:0.18em}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--texto-principal);font-size:0.92rem;font-weight:400;padding:8px 0;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--color-metal);transition:var(--transicion)}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{width:100%}
+.btn-whatsapp{
+  display:flex;align-items:center;gap:8px;
+  background:var(--color-metal);color:#0B0B0B;padding:10px 16px;border-radius:30px;
+  font-weight:600;font-size:0.88rem;white-space:nowrap
+}
+.btn-whatsapp:hover{opacity:0.9}
+
+/* Mobile menu */
+.btn-menu{display:none;background:none;border:none;color:var(--color-opalo);font-size:1.5rem;cursor:pointer}
+.menu-mobile{position:fixed;top:0;right:-100%;width:80%;max-width:320px;height:100vh;background:var(--color-fondo);
+  border-left:1px solid var(--borde);z-index:1100;transition:right 0.35s;padding:80px 24px;overflow-y:auto}
+.menu-mobile.open{right:0}
+.menu-mobile a{display:block;color:var(--texto-principal);padding:16px 0;font-size:1.1rem;border-bottom:1px solid var(--borde)}
+.menu-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--color-opalo);font-size:1.5rem;cursor:pointer}
+
+/* Hero */
+.hero{
+  min-height:90vh;display:flex;align-items:center;justify-content:center;position:relative;
+  overflow:hidden;padding-top:80px
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(circle at 50% 40%,rgba(212,175,106,0.07),transparent 50%),
+            radial-gradient(circle at 20% 20%,rgba(245,241,232,0.04),transparent 40%);
+}
+.opalo{
+  position:absolute;width:520px;height:520px;top:50%;left:50%;transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:conic-gradient(from 0deg,transparent,rgba(212,175,106,0.12),transparent,rgba(245,241,232,0.08),transparent);
+  animation:girar 12s linear infinite;pointer-events:none;z-index:0;
+}
+@keyframes girar{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;z-index:1}
+.hero-logo{width:160px;height:160px;margin:0 auto 20px;filter:drop-shadow(0 0 12px rgba(212,175,106,0.25))}
+.hero h1{font-size:3rem;color:var(--color-metal);line-height:1.1;margin-bottom:14px}
+.hero p{color:var(--texto-secundario);font-size:1.05rem;max-width:460px;margin-bottom:26px;line-height:1.7}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:14px 24px;border-radius:40px;font-weight:600;cursor:pointer;
+  border:none;font-family:inherit;transition:var(--transicion);text-align:center
+}
+.btn-principal{background:var(--color-metal);color:#0B0B0B}
+.btn-principal:hover{box-shadow:0 0 20px var(--color-metal);transform:translateY(-2px)}
+.btn-outline{background:transparent;border:1px solid var(--color-metal);color:var(--color-metal)}
+.btn-outline:hover{background:var(--color-metal);color:#0B0B0B}
+.joyas{position:relative;height:420px;display:flex;align-items:center;justify-content:center}
+.joya{position:absolute;opacity:0.85;filter:drop-shadow(0 0 10px rgba(212,175,106,0.35));animation:flotar 6s ease-in-out infinite}
+.joya:nth-child(2){animation-delay:1s;left:60%;top:20%}
+.joya:nth-child(3){animation-delay:2s;right:20%;top:40%}
+.joya:nth-child(4){animation-delay:3s;bottom:15%;left:30%}
+@keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px) rotate(3deg)}}
+
+/* Historia */
+.historia{background:#121110}
+.historia .grid{grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.card-historia{background:#151413;border:1px solid var(--borde);border-radius:var(--radio);padding:32px}
+.card-historia h3{color:var(--color-metal);margin-bottom:12px;font-size:1.35rem}
+.card-historia p{color:var(--texto-secundario);font-size:0.98rem}
+.linea{position:relative;padding-left:28px;margin-top:20px}
+.linea::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:var(--color-metal)}
+.linea::after{content:'';position:absolute;left:2px;top:0;width:10px;height:10px;background:var(--color-metal);border-radius:50%}
+
+/* Mision Vision */
+.mision-vision{background:#0f0e0e}
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.mv-card{
+  background:#151413;border:1px solid var(--borde);border-radius:var(--radio);padding:34px;
+  position:relative;overflow:hidden
+}
+.mv-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--color-metal)}
+.mv-card h3{color:var(--color-metal);font-size:1.4rem;margin-bottom:12px}
+.mv-card p{color:var(--texto-secundario);font-size:0.98rem}
+
+/* Objetivos */
+.objetivos{background:#121110}
+.objetivos .grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.obj-card{
+  background:#151413;border:1px solid var(--borde);border-radius:var(--radio);padding:28px;
+  text-align:center;transition:var(--transicion);opacity:0;transform:translateY(30px)
+}
+.obj-card.visible{opacity:1;transform:none}
+.obj-card h4{color:var(--color-metal);font-size:1.15rem;margin-bottom:10px}
+.obj-card p{color:var(--texto-secundario);font-size:0.92rem}
+.obj-num{
+  display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border-radius:50%;background:var(--color-metal);color:#0B0B0B;font-weight:700;margin-bottom:14px
+}
+
+/* Productos */
+.productos{background:#0f0e0e}
+.filtros{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:32px}
+.filtro{
+  background:transparent;border:1px solid var(--color-metal);color:var(--color-metal);
+  padding:8px 16px;border-radius:20px;font-size:0.85rem;cursor:pointer;transition:var(--transicion)
+}
+.filtro.activo,.filtro:hover{background:var(--color-metal);color:#0B0B0B}
+.productos .grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.prod-card{
+  background:#151413;border:1px solid var(--borde);border-radius:var(--radio);overflow:hidden;
+  display:flex;flex-direction:column;transition:var(--transicion);opacity:0;transform:translateY(30px)
+}
+.prod-card.visible{opacity:1;transform:none}
+.prod-card:hover{transform:translateY(-6px);border-color:var(--color-metal)}
+.prod-arte{height:180px;background:#0a0a09;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--borde)}
+.prod-info{padding:18px;flex:1;display:flex;flex-direction:column}
+.prod-info h4{color:var(--color-metal);font-size:1.05rem;margin-bottom:6px}
+.prod-info p{color:var(--texto-secundario);font-size:0.88rem;margin-bottom:12px;flex:1}
+.precios{background:#121110;border-top:1px solid var(--borde);border-bottom:1px solid var(--borde);padding:40px 20px}
+.precios .grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.precio-card{
+  background:#151413;border:1px solid var(--borde);border-radius:var(--radio);padding:26px;text-align:center
+}
+.precio-card .monto{font-family:'Cinzel',serif;font-size:1.7rem;color:var(--color-metal);font-weight:700}
+.precio-card p{color:var(--texto-secundario);font-size:0.9rem;margin-top:8px}
+.combo{margin-top:30px;text-align:center}
+.combo h3{color:var(--color-metal);margin-bottom:10px}
+
+/* Personalizacion */
+.personalizacion{background:#0f0e0e}
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:900px;margin:0 auto}
+.paso{
+  background:#151413;border:1px solid var(--borde);border-radius:var(--radio);padding:26px;
+  text-align:center;position:relative
+}
+.paso .num{
+  width:32px;height:32px;border-radius:50%;background:var(--color-metal);color:#0B0B0B;
+  font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px
+}
+.paso h4{color:var(--color-metal);font-size:1.1rem;margin-bottom:8px}
+.paso p{color:var(--texto-secundario);font-size:0.92rem}
+.btn-whatsapp-grande{
+  margin-top:40px;display:inline-flex;align-items:center;gap:12px;
+  background:var(--color-metal);color:#0B0B0B;padding:16px 32px;border-radius:50px;
+  font-weight:700;font-size:1.05rem;cursor:pointer;border:none;transition:var(--transicion)
+}
+.btn-whatsapp-grande:hover{box-shadow:0 0 25px rgba(212,175,106,0.4);transform:translateY(-3px)}
+
+/* Sostenibilidad */
+.sostenibilidad{background:#121110}
+.sus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.sus-card{
+  background:#151413;border:1px solid var(--borde);border-radius:var(--radio);padding:28px;text-align:center
+}
+.sus-card .icono{width:44px;height:44px;background:rgba(212,175,106,0.1);border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--color-metal);font-size:1.4rem}
+.sus-card h4{color:var(--color-metal);font-size:1.1rem;margin-bottom:10px}
+.sus-card p{color:var(--texto-secundario);font-size:0.92rem}
+
+/* Equipo */
+.equipo{background:#0f0e0e}
+.equipo .grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.equipo-card{
+  background:#151413;border:1px solid var(--borde);border-radius:var(--radio);overflow:hidden;
+  display:flex;flex-direction:column;text-align:center
+}
+.avatar{width:96px;height:96px;border-radius:50%;background:#2a2926;border:2px solid var(--color-metal);
+  margin:0 auto 16px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.avatar svg{width:56px;height:56px;color:var(--color-metal)}
+.equipo-card h4{color:var(--color-metal);font-size:1.1rem;margin-bottom:4px}
+.equipo-card .cargo{color:var(--texto-secundario);font-size:0.88rem;margin-bottom:16px}
+.equipo-card p{color:var(--texto-secundario);font-size:0.9rem;padding:0 18px 22px}
+
+/* Local */
+.local{background:#121110}
+.local-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:flex-start}
+.local-info h3{color:var(--color-metal);font-size:1.5rem;margin-bottom:14px}
+.local-info p{color:var(--texto-secundario);font-size:0.98rem;margin-bottom:10px}
+.local-info .destacado{color:var(--color-metal);font-weight:600}
+.pagos{margin-top:24px}
+.pagos h4{color:var(--color-metal);margin-bottom:8px}
+.pagos span{display:inline-block;background:#151413;border:1px solid var(--color-metal);color:var(--color-metal);
+  padding:6px 12px;border-radius:14px;font-size:0.85rem;margin:4px 4px 0 0}
+.local-mapa{position:relative;height:360px;background:#0a0a09;border:1px solid var(--borde);border-radius:var(--radio);
+  display:flex;align-items:center;justify-content:center;color:var(--texto-secundario);font-size:0.9rem}
+.pasos-compra{margin-top:30px}
+.pasos-compra h4{color:var(--color-metal);margin-bottom:12px}
+.pasos-lista{display:flex;gap:14px;flex-wrap:wrap}
+.paso-compra{
+  background:#151413;border:1px solid var(--borde);color:var(--color-opalo);
+  padding:12px 18px;border-radius:20px;font-size:0.9rem
+}
+
+/* Contacto */
+.contacto{background:#0f0e0e}
+.contacto .grid{grid-template-columns:1fr 1fr;gap:40px}
+.contacto h3{color:var(--color-metal);font-size:1.5rem;margin-bottom:10px}
+.contacto p{color:var(--texto-secundario);font-size:0.98rem;margin-bottom:20px}
+form{background:#151413;border:1px solid var(--borde);border-radius:var(--radio);padding:28px}
+.form-group{margin-bottom:18px}
+form label{display:block;color:var(--color-opalo);font-size:0.88rem;margin-bottom:6px;font-weight:500}
+form input,form textarea{
+  width:100%;background:#0a0a09;border:1px solid var(--borde);color:var(--color-opalo);
+  padding:12px;border-radius:8px;font-family:inherit;font-size:0.95rem
+}
+form input:focus,form textarea:focus{outline:none;border-color:var(--color-metal)}
+.msg-error{color:#ff8a80;font-size:0.85rem;margin-top:6px;display:none}
+.btn-enviar{
+  width:100%;background:var(--color-metal);color:#0B0B0B;border:none;padding:14px;border-radius:10px;
+  font-weight:700;font-size:1rem;cursor:pointer;transition:var(--transicion);margin-top:10px
+}
+.btn-enviar:hover{box-shadow:0 0 20px var(--color-metal);transform:translateY(-2px)}
+
+/* Footer */
+.footer{background:#0a0a09;border-top:1px solid var(--borde);padding:50px 20px 30px;color:var(--texto-secundario)}
+.footer .grid{grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer .logo-block{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.footer .logo-svg{width:40px;height:40px}
+.footer .logo-text{font-size:1.25rem}
+.footer p{font-size:0.9rem;line-height:1.7}
+.footer h4{color:var(--color-metal);font-size:1rem;margin-bottom:16px}
+.footer ul li{margin-bottom:10px;font-size:0.92rem}
+.footer ul li:hover{color:var(--color-metal);cursor:pointer}
+.footer-divider{border-top:1px solid var(--borde);margin:30px 0}
+.logo-desc{
+  width:110px;height:auto;opacity:0.75;filter:grayscale(0.4);border-radius:6px
+}
+.copy{text-align:center;font-size:0.85rem;color:#8a8372;margin-top:26px}
+
+/* Reveal scroll */
+.reveal{opacity:0;transform:translateY(40px);transition:var(--transicion)}
+.reveal.visible{opacity:1;transform:none}
+
+/* Redes */
+.redes{display:flex;gap:12px;margin-top:18px}
+.redes a{
+  width:36px;height:36px;border:1px solid var(--color-metal);border-radius:50%;
+  color:var(--color-metal);display:inline-flex;align-items:center;justify-content:center;font-size:0.9rem;transition:var(--transicion)
+}
+.redes a:hover{background:var(--color-metal);color:#0B0B0B}
+
+/* Responsive */
+@media(max-width:768px){
+  .btn-menu{display:block}
+  .nav-links{display:none}
+  .hero .container{grid-template-columns:1fr;text-align:center}
+  .hero h1{font-size:2.2rem}
+  .hero-ctas{justify-content:center}
+  .joyas{height:320px}
+  .historia .grid,.mv-grid,.local-grid,.contacto .grid{grid-template-columns:1fr}
+  .footer .grid{grid-template-columns:1fr 1fr;gap:30px}
+  .footer .logo-block{order:-1;grid-column:1/-1}
+  .section{padding:40px 16px}
+}
+@media(max-width:480px){
+  .hero h1{font-size:1.8rem}
+  .logo-text{font-size:1.1rem}
+  .footer .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a href="#" class="logo-link" aria-label="Inicio Opallios">
+      <svg class="logo-svg" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <symbol id="logo-opallios" viewBox="0 0 200 200">
+          <defs>
+            <style>
+              .logo-borde{fill:none;stroke:#F5F1E8;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+              .logo-luna{fill:#F5F1E8}
+              .logo-corazon{fill:none;stroke:#F5F1E8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+            </style>
+          </defs>
+          <!-- Emblema circular -->
+          <circle cx="70" cy="100" r="46" class="logo-borde"/>
+          <!-- Media luna derecha (sombra creciente) -->
+          <circle cx="98" cy="100" r="46" class="logo-luna"/>
+          <circle cx="70" cy="100" r="46" fill="#0B0B0B"/>
+          <circle cx="70" cy="100" r="46" class="logo-borde"/>
+          <!-- Corazón centrado contorno -->
+          <path d="M54 100 Q54 82 70 100 Q86 82 86 100 Q86 118 70 100 Q54 118 54 100" class="logo-corazon"/>
+          <!-- Palabra PALLIOS -->
+          <text x="132" y="100" font-family="Cinzel, serif" font-size="34" font-weight="400" fill="#F5F1E8" text-anchor="start" dominant-baseline="middle" letter-spacing="4">PALLIOS</text>
+        </symbol>
+        <use href="#logo-opallios"/>
+      </svg>
+      <span class="logo-text">OPALLIOS</span>
+    </a>
+
+    <button class="btn-menu" aria-label="Abrir menú" aria-expanded="false" id="btnMenu">&#9776;</button>
+    <nav class="menu-mobile" id="menuMobile">
+      <button class="menu-close" aria-label="Cerrar menú" id="cerrarMenu">&#10006;</button>
+      <a href="#historia">Historia</a>
+      <a href="#mision-vision">Misión y Visión</a>
+      <a href="#objetivos">Objetivos</a>
+      <a href="#productos">Productos</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#local">Local</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a href="https://wa.me/573000000000" class="btn-whatsapp" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">WhatsApp</a>
+  </div>
+</header>
+
+<main>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="opalo" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-texto">
+      <svg class="hero-logo" viewBox="0 0 200 200" aria-label="Logo Opallios"><use href="#logo-opallios"/></svg>
+      <h1>Accesorios que cuentan historias</h1>
+      <p>Bisutería 100% artesanal, hecha por nosotros con cariño e intención. Personalización completa: materiales, tallas, dijes, iniciales y diseños desde cero.</p>
+      <div class="hero-ctas">
+        <a href="#productos" class="btn btn-principal">Descubre nuestros accesorios</a>
+        <a href="#personalizacion" class="btn btn-outline">Crea el tuyo</a>
+      </div>
+    </div>
+    <div class="joyas" aria-label="Composición de joyas decorativa">
+      <svg class="joya" width="120" height="160" viewBox="0 0 120 160" aria-hidden="true" focusable="false">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D4AF6A"/><stop offset="100%" stop-color="#8a6d2f"/></linearGradient></defs>
+        <circle cx="60" cy="70" r="18" fill="url(#g1)"/>
+        <path d="M42 100 L60 60 L78 100 Z" fill="none" stroke="#D4AF6A" stroke-width="2.5"/>
+        <circle cx="60" cy="60" r="6" fill="#F5F1E8"/>
+        <path d="M42 100 Q60 140 78 100" fill="none" stroke="#D4AF6A" stroke-width="2.5" opacity="0.6"/>
+      </svg>
+      <svg class="joya" width="100" height="130" viewBox="0 0 100 130" aria-hidden="true" focusable="false">
+        <defs><radialGradient id="g2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F5F1E8"/><stop offset="100%" stop-color="#c9b79a"/></radialGradient></defs>
+        <circle cx="50" cy="65" r="16" fill="url(#g2)"/>
+        <path d="M38 95 Q50 75 62 95" fill="none" stroke="#D4AF6A" stroke-width="2.5"/>
+        <path d="M50 45 Q50 25 62 45 Q50 65 50 45" fill="none" stroke="#D4AF6A" stroke-width="2" opacity="0.7"/>
+      </svg>
+      <svg class="joya" width="110" height="150" viewBox="0 0 110 150" aria-hidden="true" focusable="false">
+        <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#D4AF6A"/><stop offset="100%" stop-color="#b8923c"/></linearGradient></defs>
+        <path d="M55 30 L80 70 L55 110 L30 70 Z" fill="url(#g3)" opacity="0.9"/>
+        <circle cx="55" cy="70" r="8" fill="#F5F1E8"/>
+        <path d="M55 30 Q55 70 55 110" fill="none" stroke="#D4AF6A" stroke-width="1.5" opacity="0.5"/>
+      </svg>
+      <svg class="joya" width="90" height="120" viewBox="0 0 90 120" aria-hidden="true" focusable="false">
+        <defs><radialGradient id="g4" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F5F1E8"/><stop offset="100%" stop-color="#e3d9bd"/></radialGradient></defs>
+        <ellipse cx="45" cy="55" rx="14" ry="10" fill="url(#g4)"/>
+        <path d="M35 85 Q45 65 55 85" fill="none" stroke="#D4AF6A" stroke-width="2.5"/>
+        <path d="M45 55 Q45 35 55 55 Q45 75 45 55" fill="none" stroke="#D4AF6A" stroke-width="1.5" opacity="0.6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Nuestra historia -->
+<section class="historia section reveal" id="historia">
+  <div class="container">
+    <h2 class="section-title">Nuestra historia</h2>
+    <div class="grid">
+      <div class="card-historia reveal">
+        <h3>El significado de Opallios</h3>
+        <p>Viene del griego <strong>ops / ophthalmos</strong> (ojo, visión) y <strong>allos</strong> (cambio, distinto, otro). También alude a percibir un cambio de color, como el ópalo cuando la luz se difracta y varia sus tonalidades. Cada pieza es una mirada distinta al mundo.</p>
+        <div class="linea reveal"><strong>¿Qué hacemos?</strong> Bisutería 100% elaborada por nosotros, artesanal, con servicio de personalización completa.</div>
+        <div class="linea reveal"><strong>Propuesta de valor:</strong> vender no solo accesorios, sino experiencias y emociones. Hacer realidad las ideas del papel o la imaginación del cliente.</div>
+      </div>
+      <div class="card-historia reveal">
+        <h3>El problema que resolvemos</h3>
+        <p>Querer dar un detalle personal con un diseño único y lleno de significado. En el mercado los accesorios suelen ser limitados y caros, y muchos son “traídos de” otro lugar, no hechos por quienes los venden.</p>
+        <p>Nosotros ofrecemos piezas de uso diario que se adaptan al gusto y al presupuesto del cliente, con relación cercana y producción bajo pedido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Misión y Visión -->
+<section class="mision-vision section reveal" id="mision-vision">
+  <div class="container">
+    <h2 class="section-title">Misión y Visión</h2>
+    <div class="mv-grid">
+      <div class="mv-card reveal">
+        <h3>Misión</h3>
+        <p>Opallios nutre la creatividad de sus clientes con accesorios que reflejan su personalidad y estilo. Generamos ideas y las llevamos a la realidad con nuestras habilidades, creando una identidad que embellece el significado de las historias: un detalle para regalar o una parte de ti para el uso diario. Así motivamos una apariencia con carácter y una autoestima alta.</p>
+      </div>
+      <div class="mv-card reveal">
+        <h3>Visión</h3>
+        <p>Ser una marca reconocida a nivel nacional por sus accesorios personalizados, que trascienden lo estético y se convierten en una forma de expresión personal y emocional. Que Opallios sea un referente en experiencias significativas, donde cada accesorio siga contando historias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Objetivos -->
+<section class="objetivos section reveal" id="objetivos">
+  <div class="container">
+    <h2 class="section-title">Objetivos</h2>
+    <div class="grid">
+      <div class="obj-card reveal"><div class="obj-num">1</div><h4>Accesorios con personalización total</h4><p>Desde cero o partiendo de un diseño base, con asesoría completa.</p></div>
+      <div class="obj-card reveal"><div class="obj-num">2</div><h4>Precios flexibles</h4><p>Según material, tamaño y complejidad, accesibles para distintos presupuestos.</p></div>
+      <div class="obj-card reveal"><div class="obj-num">3</div><h4>Reconocimiento nacional</h4><p>Sin perder la cercanía con el cliente, llegando a diferentes públicos.</p></div>
+      <div class="obj-card reveal"><div class="obj-num">4</div><h4>Innovación constante</h4><p>Nuevas técnicas, piezas elaboradas y colecciones temáticas exclusivas.</p></div>
+      <div class="obj-card reveal"><div class="obj-num">5</div><h4>Sostenibilidad</h4><p>Empaques biodegradables y reutilizables, producción bajo pedido e hipoalergénicos.</p></div>
+      <div class="obj-card reveal"><div class="obj-num">6</div><h4>Apoyo al emprendimiento local</h4><p>Fortaleciendo la autoestima y la identidad de nuestros clientes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Productos -->
+<section class="productos section reveal" id="productos">
+  <div class="container">
+    <h2 class="section-title">Nuestros productos</h2>
+    <div class="filtros">
+      <button class="filtro activo" data-cat="todos">Todos</button>
+      <button class="filtro" data-cat="orejas">Aretes</button>
+      <button class="filtro" data-cat="cuello">Collares</button>
+      <button class="filtro" data-cat="muñeca">Manillas</button>
+      <button class="filtro" data-cat="llaves">Llaveros</button>
+      <button class="filtro" data-cat="telefono">Phone charms</button>
+      <button class="filtro" data-cat="tobillera">Tobilleras</button>
+      <button class="filtro" data-cat="cabello">Cabello</button>
+      <button class="filtro" data-cat="bolso">Bolsos</button>
+      <button class="filtro" data-cat="colgante">Colgantes</button>
+    </div>
+    <div class="grid" id="listaProductos"></div>
+  </div>
+</section>
+
+<!-- Franja precios -->
+<section class="precios reveal">
+  <div class="container">
+    <h2 class="section-title">Precios flexibles (COP)</h2>
+    <div class="grid">
+      <div class="precio-card reveal">
+        <div class="monto">Desde $6.000</div>
+        <p>Aretes sencillos y phone charms.</p>
+      </div>
+      <div class="precio-card reveal">
+        <div class="monto">$10.000 a $25.000</div>
+        <p>Collares y manillas.</p>
+      </div>
+      <div class="precio-card reveal">
+        <div class="monto">$60.000 a $180.000</div>
+        <p>Bolsos en pedrería y kits de combos, según tamaño y pedrería.</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:18px;font-size:0.9rem;color:#8a8372">El precio final depende del material, tamaño y complejidad. Ejemplo: la misma pieza en acrílico a menor precio o en acero inoxidable a mayor precio.</p>
+    <div class="combo reveal">
+      <h3>Combo más pedido</h3>
+      <p>Collar + par de aretes. También aplicamos descuentos por llevar varios productos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Personalización -->
+<section class="personalizacion section reveal" id="personalizacion">
+  <div class="container">
+    <h2 class="section-title">Personalización</h2>
+    <p style="text-align:center;color:var(--texto-secundario);max-width:700px;margin:0 auto 34px">El cliente puede elegir materiales, insumos, tamaños, medidas y diseños, o crear un accesorio desde cero con asesoría completa.</p>
+    <div class="pasos">
+      <div class="paso reveal"><div class="num">1</div><h4>Elige la pieza</h4><p>Aretes, collar, manilla, llavero, phone charm, tobillera, colgante o accesorio para el cabello.</p></div>
+      <div class="paso reveal"><div class="num">2</div><h4>Material y color</h4><p>Acero inoxidable, perlas de imitación, mostacilla acrílica, alambre y dijes metálicos.</p></div>
+      <div class="paso reveal"><div class="num">3</div><h4>Dijes o iniciales</h4><p>Estrellas, corazones, lunas, mariposas, calaveras, murciélagos, alas, llaves, cruces, signos zodiacales, flores y letras.</p></div>
+      <div class="paso reveal"><div class="num">4</div><h4>Talla y cierre</h4><p>Medidas exactas para que la pieza se adapte perfectamente a ti.</p></div>
+      <div class="paso reveal"><div class="num">5</div><h4>Confirmamos tu diseño</h4><p>Asesoramos tu idea antes de producirla bajo pedido, con cariño e intención.</p></div>
+    </div>
+    <a href="https://wa.me/573000000000?text=Hola%20Opallios,%20quisiera%20crear%20un%20accesorio%20personalizado.%20Podrían%20asesorarme?" class="btn-whatsapp-grande" target="_blank" rel="noopener" aria-label="Iniciar chat de WhatsApp para personalizar">Crear el mío por WhatsApp</a>
+  </div>
+</section>
+
+<!-- Sostenibilidad -->
+<section class="sostenibilidad section reveal" id="sostenibilidad">
+  <div class="container">
+    <h2 class="section-title">Sostenibilidad y calidad</h2>
+    <div class="sus-grid">
+      <div class="sus-card reveal">
+        <div class="icono">🌱</div>
+        <h4>Empaques ecológicos</h4><p>Papel biodegradable y envoltorios en tela reutilizables.</p>
+      </div>
+      <div class="sus-card reveal">
+        <div class="icono">📦</div>
+        <h4>Producción bajo pedido</h4><p>Modelo que reduce el desperdicio de material.</p>
+      </div>
+      <div class="sus-card reveal">
+        <div class="icono">🛡️</div>
+        <h4>Hipoalergénicos</h4><p>Materiales hipoalergénicos cuando se soliciten.</p>
+      </div>
+      <div class="sus-card reveal">
+        <div class="icono">✨</div>
+        <h4>Garantía</h4><p>Garantía en cada producto artesanal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Equipo -->
+<section class="equipo section reveal" id="equipo">
+  <div class="container">
+    <h2 class="section-title">Equipo / Accionistas fundadoras</h2>
+    <div class="grid">
+      <div class="equipo-card reveal">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <circle cx="50" cy="50" r="46" fill="#9a9790"/>
+            <circle cx="50" cy="32" r="16" fill="#b9b6ad"/>
+            <path d="M34 54 Q50 70 66 54" fill="none" stroke="#8a8780" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Caroll Ximena Cepeda Linares</h4>
+        <div class="cargo">Gerente General, CEO y Representante Legal</div>
+        <p>Dirige la empresa, la representa legalmente, coordina las áreas y supervisa el cumplimiento de objetivos.</p>
+      </div>
+      <div class="equipo-card reveal">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <circle cx="50" cy="50" r="46" fill="#9a9790"/>
+            <circle cx="50" cy="32" r="16" fill="#b9b6ad"/>
+            <path d="M34 54 Q50 70 66 54" fill="none" stroke="#8a8780" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Emily García Acosta</h4>
+        <div class="cargo">Directora Administrativa y Financiera</div>
+        <p>Organiza lo administrativo, controla ingresos y gastos, elabora presupuestos y registra las compras de materiales.</p>
+      </div>
+      <div class="equipo-card reveal">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <circle cx="50" cy="50" r="46" fill="#9a9790"/>
+            <circle cx="50" cy="32" r="16" fill="#b9b6ad"/>
+            <path d="M34 54 Q50 70 66 54" fill="none" stroke="#8a8780" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Miguel Ángel Sarmiento Moreno</h4>
+        <div class="cargo">Director Comercial y de Sistemas</div>
+        <p>Organiza las ventas, atiende clientes, apoya la comercialización y coordina las herramientas tecnológicas.</p>
+      </div>
+      <div class="equipo-card reveal">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <circle cx="50" cy="50" r="46" fill="#9a9790"/>
+            <circle cx="50" cy="32" r="16" fill="#b9b6ad"/>
+            <path d="M34 54 Q50 70 66 54" fill="none" stroke="#8a8780" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>María Isabella Sánchez Jiménez</h4>
+        <div class="cargo">Directora de Logística y Talento Humano</div>
+        <p>Coordina la entrega de pedidos, organiza materiales, apoya la distribución y promueve el trabajo en equipo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Local -->
+<section class="local section reveal" id="local">
+  <div class="container">
+    <h2 class="section-title">Local físico y compras</h2>
+    <div class="local-grid">
+      <div class="local-info reveal">
+        <h3>Local Opallios</h3>
+        <p><span class="destacado">Dirección (ejemplo editable):</span> Local de aproximadamente 10 m², localidad de Tunjuelito, Bogotá D.C., Colombia.</p>
+        <p>También contamos con <strong>ventas virtuales</strong> (redes sociales y catálogo web) con <strong>envíos a todo el país</strong>.</p>
+        <p><span class="destacado">Horarios (ejemplo editable):</span> Lunes a sábado, 10:00 a.m. a 6:00 p.m.</p>
+        <div class="pagos reveal">
+          <h4>Métodos de pago</h4>
+          <span>Efectivo</span><span>Nequi</span><span>Daviplata</span><span>Bre-B</span>
+        </div>
+        <div class="pasos-compra reveal">
+          <h4>Cómo comprar</h4>
+          <div class="pasos-lista">
+            <div class="paso-compra">Escríbenos por WhatsApp</div>
+            <div class="paso-compra">Elige tu accesorio o personalízalo</div>
+            <div class="paso-compra">Coordina pago y envío o recogida</div>
+          </div>
+        </div>
+      </div>
+      <div class="local-mapa reveal" aria-label="Ilustración del local físico">
+        <svg viewBox="0 0 500 360" aria-hidden="true" focusable="false" width="100%" height="100%">
+          <rect width="500" height="360" fill="#0a0a09"/>
+          <!-- Edificio -->
+          <rect x="150" y="100" width="200" height="180" fill="#151413" stroke="#D4AF6A" stroke-width="2"/>
+          <rect x="210" y="140" width="80" height="40" fill="#2a2926" stroke="#D4AF6A" stroke-width="1"/>
+          <circle cx="250" cy="160" r="3" fill="#F5F1E8"/>
+          <path d="M150 100 L250 60 L350 100" fill="none" stroke="#D4AF6A" stroke-width="2"/>
+          <!-- Puerta -->
+          <rect x="235" y="220" width="30" height="60" fill="#2a2926" stroke="#D4AF6A" stroke-width="2"/>
+          <!-- Señal -->
+          <rect x="215" y="40" width="70" height="22" fill="#D4AF6A"/>
+          <text x="250" y="58" font-family="Cinzel, serif" font-size="12" fill="#0B0B0B" text-anchor="middle" font-weight="700">OPALLIOS</text>
+          <!-- Detalles dorados -->
+          <circle cx="170" cy="150" r="2" fill="#D4AF6A" opacity="0.7"/>
+          <circle cx="330" cy="190" r="2" fill="#D4AF6A" opacity="0.7"/>
+          <circle cx="310" cy="130" r="2" fill="#D4AF6A" opacity="0.7"/>
+          <text x="250" y="320" font-family="Inter, sans-serif" font-size="13" fill="#8a8372" text-anchor="middle">Local físico · Tunjuelito, Bogotá D.C.</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="contacto section reveal" id="contacto">
+  <div class="container">
+    <div class="grid">
+      <div class="reveal">
+        <h3>Contáctanos</h3>
+        <p>¿Tienes una idea en mente? Escríbenos por WhatsApp o completa el formulario y armaremos tu mensaje para enviarlo directamente.</p>
+        <a href="https://wa.me/573000000000" class="btn btn-principal" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">Escribir por WhatsApp</a>
+        <div class="redes">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="TikTok">TT</a>
+        </div>
+      </div>
+      <form id="formContacto" novalidate>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" required placeholder="Tu nombre">
+          <span class="msg-error" id="errNombre">Ingresa tu nombre</span>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" rows="4" required placeholder="Cuéntanos qué accesorio buscas..."></textarea>
+          <span class="msg-error" id="errMensaje">Escribe un mensaje</span>
+        </div>
+        <button type="submit" class="btn-enviar" id="btnEnviar">Enviar por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="grid">
+      <div class="logo-block">
+        <svg class="logo-svg" viewBox="0 0 200 200" aria-label="Logo Opallios"><use href="#logo-opallios"/></svg>
+        <span class="logo-text">OPALLIOS</span>
+      </div>
+      <div>
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="#historia">Historia</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#personalizacion">Personalización</a></li>
+          <li><a href="#local">Local físico</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="#" target="_blank" rel="noopener">Instagram (placeholder)</a></li>
+          <li><a href="#" target="_blank" rel="noopener">TikTok (placeholder)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Información</h4>
+        <ul>
+          <li>Opallios S.A.S. – Bogotá, Colombia</li>
+          <li>Ventas virtuales y envíos a todo el país</li>
+          <li>Bisutería artesanal personalizada</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-divider" aria-hidden="true"></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:22px">
+      <img src="data:image/png;base64,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oaamBqWlpXA6nXj11VexcuVKXittKrIsw26344UXXkCfPn3QpUsXpKamwmw2Q5ZlhLVWnMvlQn5+Ps6cOYObbrqJ14qbEv/su8w4JCUl4aKLLsLs2bMxevRoSJrBlrQjhquqqvgRx6w7hx1vzFpBwWAQPp8Pn3/+Od544w3s2bMnojFrin/1MB1g3UhJSUm49957ce+990JVVVRWViIvLw+7d+/GgQMH4PP5kJ2djX79+qFXr17o0qULEhMTeUvC6/Xisccew1tvvVWrYthcf0aD2pKwAVmz2Ux33303VVZW0vHjx2nAgAF8YV1DA9dsZpHFYqGEhASyWq2kqmqTDwHSu6mqKpnNZrJYLGQ2m+O24M1isdCkSZOosrKy1vYexplObGosmxHFCAaDdPToUcrJyWnSDCgWZ4mJiZSSkkIXXHAB/etf/yKXy0V+v588Hg9t3LiRevXqRd26daOsrCzKzMysJVlZWXT++edTnz596IorrqC77rqL3n33XSopKSG3201ut5uOHDlCixcvpj59+vDpzUa/xCr69JG0w6SGDRtG5eXlVFVVRfPmzWu07jRFJN3BWR06dKCcnBxasGABOZ1Onk5ut5s++ugjGjx4MHXu3Jkfx2v8VizC0iw5OZkyMzNp5MiRdPjwYfL5fHxW3JkzZ2jatGmUnZ1NqampcTvbhLntcDgoPT2d+vfvT5s2beK7DQQCASosLKTrr7+eunbtSikpKc3e0ZnFs91upylTptDnn39OJSUl5PP5yOPxUFFREX388cf0wAMP0Lhx4+iiiy6i888/n7Kysig7O5tycnLo4osvphtuuIEWLFhAmzZtourqavJ6veT1eun06dO0evVquvrqq8lqtcZ1SyD2HbPZTH369KH169dTeXk5FRQU0MKFC2nYsGHUqVMnstlsZDabyWq1ksViIYfDQd26daNJkybRhx9+yP1bVVVFM2fOJLPZ3GJ6bZA6F86qMGVISkqidevWUXV1Nb3yyiu1FNwYKey3op1p3bNnT5oyZQotWLCA3njjDXr11Vdpzpw5dM0119B5551HDoej1pYfRj/ohc1OSk1NpX79+tENN9xAc+fOpaeeeormzp1LN954I/Xv359SU1P5WdcNfTOSsM0Dv/rqqzortiOJEb/fT263m+bPn8/9YXQjmujjQpIkstlsdMcdd1BlZSUFg0Fyu9302Wef1douJdI3mLuqqnJDPXDgQHr//feppKSEvF4vud1u2rVrF02YMCEuu+HqdUKWZbJarfTII49QTU0NuVwu2rFjB3Xu3LnJadOQMHfZ91VVpfPPP58KCgq4wfd4PPTrX/+6loForl+Yuyw9TCYTvfnmm+R2uykUCpHb7aavv/6aUlJSaoW9ufGNeuL82WefpZqaGvL7/eT1emn16tWUlJRUZ3udpoSbudGrVy9avnw5VVVVcQNx4sQJWrZsGT/J0mQy1arAGd1mlbx27drR+PHjac2aNVRQUEAej4c8Hg8VFBTAo0eP0rZtW7Jly6ZmNj8ivU7F07cyfD4fnThxgrKzs5tdKFqtVpo8eTKVl5fzgm79+vXUrl27qN82po2k2+137Nix/ARCv9/PTyHUH1Nr/F5jhLkDbTFjcnIyffnll/xo2aKiIrr22mt5pjK+H09hBXfHjh3p6NGj3A9Op5Muu+yyuNSq6xOTyURPPvkkOZ1OCgQC5PF4aM2aNeRwOPi7xu81VfTuQusBWLhwITmdTgpq28y89957fL1TU92WNP1JSEigqVOn0qFDh7iBcLlc9MEHH9All1xS62Avo9+M1/QiyzIlJyfT6NGj6YsvvuAbdrrdbtqyZQtdfvnltabiN1VkrcW5YsUKqq6uptOnT9Pw4cOjtnSNfpUkiaxWK91444105MgRuvvuu2vtJG18P85S58JZFaYUr7/+Orndbtq2bRt16dIlYq2EiclkovHjx1NeXl6thWt6YQVrUDsMqKSkhP785z9TRkZGne9JWhNxyJAh9PHHH5Pb7Safz8ffN0pIO42uvLyc5s6dy2twxrBFE0kzTjk5OVRUVMRXaEczFMZrwWCQqqur6brrrmv2/ldGQ+H1emndunV1jpY1ijEeJd2262azmUaMGEH79+/n60Zqampozpw5tRZQxip6t0wmE11wwQVUXFzMdcHj8dBLL73EW6XG9+MtsixTamoqHTp0iKdjSxsKaBWsefPmUU1NDYVCoVY3FE8//TS5XC4Kh8PcUNjt9jrvxiKydqbLrFmzqKSkhLdW8vPz6Y9//CMlJibWqfUb/Wa8ZhRZlslsNlOXLl3ohRde4DrPukonTpxIZrO5jt8aK5Kml9dccw1VVFRQUVERTZ48mUwmE88bRv+y94yiqiolJCTQs88+S3fffXdUQxNnqXPhrIg+sL1796bTp0+T0+mkO++8s97FdawWOmjQIPrxxx/5KXJer5dcLhcdPXqUNm7cSGvWrKEdO3ZQWVlZrZZAVVUV5ebm0sCBA2uNY5jNZpo0aRIdOHCAampqyOPxkM/nI6/XS0VFRZSbm0tffvkl7dy5k0pKSsjj8XCjUVVVRQsXLiS73R5zy0LSmsX/+Mc/yOVy1TEQTKIZD7fbTS+//DLfhrypCmS1Wum6666jsrKymAxFJNGnmdlspsGDB9PBgwd5Wpw6dYrGjBlDFoulzruNEfZtk3bi4YsvvsiNBBtfOXbsGHXp0oVUVa3zfrxFkqRahiIcDpPL5eKGwvh8vERVVXrsscf42IjH46G1a9dSUlJSzGkWqzBD4XQ66zUUej0wvq+/z36zSuPTTz9N5eXl5Pf7yefz0ZEjR+iqq66ixMREruPGbzVG9P6RtELYbrfTjBkzqLy8nDweDzmdTjp58iRNmzYt5q399d+22Wy0dOlSKisroxUrVsTU0jL6U5ZlyszMpDFjxrSoPhmkzoWzIiwSFEWhW265hSoqKmjv3r2Unp7OWxP652RZJlVVKTMzk77//nvyer3k8XiourqaNm7cSNOmTaOsrCxyOBxkt9spJSWFBg8eTAsXLqQdO3bUGqTdvn07DRw4kBISEighIYFuvPFGOnXqFC/IiouLad26dTR79mzq06cPJSUlUWJiIrVr144GDhxIixYtouPHj/MuqRMnTtDo0aObVAtRFIXGjRtHlZWVdVoNekNhvMae9fl8tHPnzjpbrxvdaUiMhsLj8cTFUEha83nu3Lnkcrm4EcrNzaXu3bvHbFz131cUhbp37055eXnk8XiovLycty49Hg/NnDmTEhISYvZ/rCJFMRSmFtyXS1VVevTRR2sZin/961/nnKGQte675ORkevTRR6m0tJS3JH788UdeqajvO7GIUTdlrYvod7/7HR0/fpz8fj/5/X7Ky8ujyZMnx3R2vV4vO3ToQEeOHKHKykq68cYbY2pZGv3I/MnGYozPt5DUuXBWhEWAxWKhl19+mSoqKujVV1+tM0tDH1kWi4Vuu+02qqqq4rXp9957jzp27MibZKzVoY/czMxMWrRoEVVVVfGuif/85z/Up08fGjhwIB0+fJjXRg8ePEgTJkzg3UmKNnah/7bdbqfRo0fTmTNnyOfzkdvtpq1btzYpg0qSRB06dKCffvqJ/LpBbSPG7idGIBCg6upq6t+/f0zKaJSWNBSKolBmZibt3buX1xKdTic98cQTTSpI2XfNZjNdf/31VFNTQ16vl/785z/TqVOneBpv3LiROnToEFOtsCkiCUPRLEMhaa3D3/72t7wXwKvNSmJjBizvGb8Rqxh1k+mnzWaj2bNnk9vtpqA2/pefn0+jRo3i+cr4LaPovzdy5EhyuVxUUFBAPXv2jKklYPSfUYzPt4TEby+BZsLm1FutVgwcOBCSJGHbtm38HnQLmNj/kiThuuuug8ViQTAYRFVVFZ599lmUlZXVWrXI3iFtlfCpU6cwb948/M///A/KysoAAP369cPDDz+MJ598EllZWQiFQvj8889x8803Y/369SgvLwdpC8/YfHy2iMnpdGLr1q34y1/+Ao/HA5PJhIsvvhjDhg2rtSaC+bkh3G439uzZU+sam9fNxPgtdp0t+58cSJfYd2UudUsrMydxvi7Pox+D4VCKC4uxrvvvotQKMRXp1599dVISUmptaivMe6y8JnNZowbNw4AcPToUbz77rvIzc1FMBiELMvo1asXMjMza61taClY/DGYe81Zu9AY2Poavc41Jf2bgj6NI9GY+9DWh/Tr1w/z5s2Dw+GAqqrw+/14/vnn8Z///Ceuq8uNusn00+/3Y8WKFXjttdfg8/kgyzI6deqEefPmIT09vdZalfqEfd9kMmHw4MEAgGPHjqG4uLhW3moIo/+M0hq0GUPB6NSpE7p16wa3243//Oc/9S4ek2UZCQkJ6N+/P1+I89577+HIkSONUqBgMIh3330X06ZNQ01NDRRFwW9/+1uMGTMGRIRvvvkGM2fOxKFDhxq18pGI8Pnnn6O4uBiStgr0sssuq7W9QWMJh8P44YcfGhUOo9IwxRk5ciSsVqvx8TYDEWHTpk2oqakBtAKte/fuyMjIaFKcMWNzySWXwGQyYcuWLaiursbWrVu5MWrfvj3GjBnTpO8LWgdZ2yHg5ZdfRteuXfmCuNzcXLz99tu19nhrScLhMNxuN1555RXs2rWLL2obNmwY/vznP3ND0RgURUFGRgbC4TDKy8trLfw8V2hThkKSJIwcORJJSUk4ePAgCgoKjI8AWiEjSRIcDgffx8Xv9+PLL7/khkWvTMaClLTantfrxdatW7Fw4UJ4PB5AU5Dvv/8e9957L0pKSuo1VAxWKwiHwygpKcHp06fh8/lARLzQ09cuGlJyIkIgEMDhw4cRjmFrBxhWf3br1g3t2rVrtDK3Jiy+nE4nr10RERwOBwYOHNgoA8mQtFXRsixj6tSp6NKlC5xOJ9avXw+Xy4V169ahsLAQoVAIqqpi6tSpSEtL4zXvlqQtxD3LK60B01XmXqzusrS87rrrMHDgQFgsFiiKgp9++gkzZ86MuGK6pWDulJaW4plnnoHH44GqqjCbzbjxxhsxfvz4BisczJ9hbZU6AKSnp8NqtbZKGOJJy+eWRiJpuyeOHTsWpNXO2aZy9SFpG9mFtc3OysvLG62cTBECgQCWL1+OTz75BB6PB+Xl5Xj88cdx7NgxvokZMwbRICL4/X6Ul5cDWmGdnJzcpEwTCoVw8uRJvs1CQ3Gg9x+LE7aNRCzuRiOaH2KB+SccDsPlcsHlcvEwqqqKPn361CnE9WGMJOFwGBaLBTNmzICiKKiqqsKOHTsQDodRUFCAL774gn+nW7du+NWvfgVVVeu405IY06mlaOnvR8OoI0a/RIsDScv/aWlpmD17Nt8+PDA5cuXoUL0G307o9Pp8PDDD7v6yJEj+O1vf8u8++67+P777+Ho0aN49913sWfPHvz93//+9zBt2jTef/99/OY3v4G77roLDz30EG+99ZYuuOACvPXWW3j33XffYW+99ZYGg4HC4TAajQgEApw4cQJ79+5FT08P3377LWpraws68U2SJAwaNQoZGRl86aWXMGzYMFi7di0AEAgEEolEqNVqNBoNJpPJSCaTwePxUBQFggEAoVAIBELC2/0FSHb+Y/0rgAAAABJRU5ErkJggg==" alt="Logo" class="logo-desc" aria-label="Imagen descargada Logo">
+    </div>
+    <p class="copy">Opallios S.A.S. – Bogotá, Colombia. Bisutería artesanal personalizada. Hecho con cariño e intención.</p>
+  </div>
+</footer>
+
+<script>
+// ==================== CONSTANTES EDITABLES ====================
+const CONFIG = {
+  whatsapp: '573000000000', // número placeholder, cambiar por el real
+  instagram: '#',          // placeholder
+  tiktok: '#',             // placeholder
+  direccion: 'Local de aproximadamente 10 m², localidad de Tunjuelito, Bogotá D.C., Colombia (dirección de ejemplo)',
+  horarios: 'Lunes a sábado, 10:00 a.m. a 6:00 p.m. (horario de ejemplo)',
+  productos: [
+    {cat:'orejas', nombre:'Aretes estrella', desc:'Dije estrella en acero con perla imitación.', svg:`<svg viewBox="0 0 100 100"><path d="M50 10 L66 38 L94 38 L73 57 L82 84 L50 68 L18 84 L27 57 L6 38 L34 38 Z" fill="none" stroke="#D4AF6A" stroke-width="3"/><circle cx="50" cy="52" r="6" fill="#F5F1E8"/></svg>`},
+    {cat:'cuello', nombre:'Collar luna', desc:'Colgante luna creciente con cadena.', svg:`<svg viewBox="0 0 100 100"><circle cx="30" cy="50" r="20" fill="#D4AF6A"/><circle cx="38" cy="50" r="20" fill="#0a0a09"/><path d="M30 30 Q50 50 30 70" fill="none" stroke="#F5F1E8" stroke-width="2"/></svg>`},
+    {cat:'muñeca', nombre:'Manilla corazón', desc:'Manilla con dije corazón contorno.', svg:`<svg viewBox="0 0 100 100"><path d="M50 80 Q30 60 50 40 Q70 60 50 80" fill="none" stroke="#D4AF6A" stroke-width="3"/><path d="M50 40 Q65 55 50 80 Q35 55 50 40" fill="none" stroke="#D4AF6A" stroke-width="1.5" opacity="0.6"/></svg>`},
+    {cat:'llaves', nombre:'Llavero llave', desc:'Dije llave antigua con argolla.', svg:`<svg viewBox="0 0 100 100"><circle cx="30" cy="30" r="10" fill="none" stroke="#D4AF6A" stroke-width="3"/><path d="M40 30 L60 30 L60 60 L40 60 Z" fill="none" stroke="#D4AF6A" stroke-width="3"/><rect x="48" y="60" width="4" height="20" fill="#D4AF6A"/><circle cx="50" cy="62" r="2" fill="#F5F1E8"/></svg>`},
+    {cat:'telefono', nombre:'Phone charm luna', desc:'Charm para teléfono con luna y perla.', svg:`<svg viewBox="0 0 100 100"><circle cx="50" cy="40" r="14" fill="none" stroke="#D4AF6A" stroke-width="3"/><circle cx="58" cy="40" r="14" fill="#0a0a09"/><circle cx="50" cy="70" r="7" fill="#F5F1E8"/><path d="M50 77 L50 95" fill="none" stroke="#D4AF6A" stroke-width="2"/></svg>`},
+    {cat:'tobillera', nombre:'Tobillera flores', desc:'Tobillera con dijes florales.', svg:`<svg viewBox="0 0 100 100"><g stroke="#D4AF6A" stroke-width="2" fill="none"><circle cx="30" cy="40" r="6"/><circle cx="50" cy="40" r="6"/><circle cx="70" cy="40" r="6"/></g><circle cx="30" cy="40" r="2" fill="#F5F1E8"/><circle cx="50" cy="40" r="2" fill="#F5F1E8"/><circle cx="70" cy="40" r="2" fill="#F5F1E8"/></svg>`},
+    {cat:'cabello', nombre:'Accesorio cabello', desc:'Pinza con gema y perla.', svg:`<svg viewBox="0 0 100 100"><path d="M20 80 Q50 20 80 80" fill="none" stroke="#D4AF6A" stroke-width="6"/><circle cx="50" cy="50" r="8" fill="#F5F1E8"/><circle cx="50" cy="50" r="4" fill="#D4AF6A"/></svg>`},
+    {cat:'bolso', nombre:'Bolso pedrería', desc:'Bolso pequeño con pedrería dorada.', svg:`<svg viewBox="0 0 100 100"><path d="M30 80 Q30 40 50 40 Q70 40 70 80 L30 80 Z" fill="none" stroke="#D4AF6A" stroke-width="4"/><circle cx="40" cy="60" r="4" fill="#F5F1E8"/><circle cx="50" cy="55" r="4" fill="#F5F1E8"/><circle cx="60" cy="60" r="4" fill="#F5F1E8"/></svg>`},
+    {cat:'colgante', nombre:'Colgante mariposa', desc:'Dije mariposa con alas abiertas.', svg:`<svg viewBox="0 0 100 100"><path d="M50 30 Q30 20 30 40 Q30 60 50 50 Q70 60 70 40 Q70 20 50 30 Z" fill="none" stroke="#D4AF6A" stroke-width="3"/><circle cx="50" cy="50" r="4" fill="#F5F1E8"/><path d="M50 30 L50 70" fill="none" stroke="#D4AF6A" stroke-width="1.5"/></svg>`}
+  ]
+};
+
+// ==================== MENÚ MÓVIL ====================
+const btnMenu = document.getElementById('btnMenu');
+const menuMobile = document.getElementById('menuMobile');
+const cerrarMenu = document.getElementById('cerrarMenu');
+
+function toggleMenu(){
+  const open = menuMobile.classList.toggle('open');
+  btnMenu.setAttribute('aria-expanded', open);
+}
+btnMenu.addEventListener('click', toggleMenu);
+cerrarMenu.addEventListener('click', toggleMenu);
+
+// Cerrar al hacer clic en un enlace
+menuMobile.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', ()=>{
+    menuMobile.classList.remove('open');
+    btnMenu.setAttribute('aria-expanded','false');
+  });
+});
+
+// ==================== SCROLL SUAVE ANCLAS ====================
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',(e)=>{
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+// ==================== FILTRO PRODUCTOS ====================
+const lista = document.getElementById('listaProductos');
+const filtros = document.querySelectorAll('.filtro');
+
+function renderProductos(cat='todos'){
+  lista.innerHTML = CONFIG.productos.filter(p=>cat==='todos'||p.cat===cat).map((p,i)=>
+    `<article class="prod-card reveal">
+       <div class="prod-arte" aria-hidden="true">${p.svg}</div>
+       <div class="prod-info">
+         <h4>${p.nombre}</h4>
+         <p>${p.desc}</p>
+       </div>
+     </article>`
+  ).join('');
+  observarRevelar();
+}
+filtros.forEach(f=>{
+  f.addEventListener('click',()=>{
+    filtros.forEach(x=>x.classList.remove('activo'));
+    f.classList.add('activo');
+    renderProductos(f.dataset.cat);
+  });
+});
+
+// ==================== REVEAL AL SCROLL ====================
+function observarRevelar(){
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+}
+observarRevelar();
+
+// ==================== FORMULARIO CONTACTO -> WHATSAPP ====================
+const form = document.getElementById('formContacto');
+const btnEnviar = document.getElementById('btnEnviar');
+
+function validar(){
+  let ok = true;
+  const nombre = document.getElementById('nombre');
+  const mensaje = document.getElementById('mensaje');
+  const errNombre = document.getElementById('errNombre');
+  const errMensaje = document.getElementById('errMensaje');
+  if(!nombre.value.trim()){ nombre.classList.add('error'); errNombre.style.display='block'; ok=false; }else{ nombre.classList.remove('error'); errNombre.style.display='none'; }
+  if(!mensaje.value.trim()){ mensaje.classList.add('error'); errMensaje.style.display='block'; ok=false; }else{ mensaje.classList.remove('error'); errMensaje.style.display='none'; }
+  return ok;
+}
+
+form.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  if(!validar()) return;
+  const texto = `Hola Opallios, me llamo ${document.getElementById('nombre').value.trim()}. %0A${encodeURIComponent(document.getElementById('mensaje').value.trim())}`;
+  btnEnviar.textContent='Enviando...';
+  setTimeout(()=>{
+    location.href=`https://wa.me/${CONFIG.whatsapp}?text=${texto}`;
+    btnEnviar.textContent='Enviar por WhatsApp';
+  },400);
+});
+
+renderProductos();
+</script>
+
+</body>
+</html>
